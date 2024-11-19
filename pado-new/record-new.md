@@ -8,36 +8,27 @@
 ## 快速入门
 首次使用 `Primus` ？以下是入门方法：
 
-- 1. 安装 在您的项目中设置SDK。
-- 2. 前端示例 了解如何使用`MPC-TLS SDK`的基本流程。
+- 1. [安装](../install/install.md) 在您的项目中设置SDK。
+- 2. [前端示例](../quickstart/quickstart.md) 了解如何使用`MPC-TLS SDK`的基本流程。
 
 ## 工作原理
 想了解`Primus SDK`的基本工作流程？以下是详细介绍：
 
 - [基本工作流程](./work-flow/work-flow.md)
 
-## 示例
+## 数据验证示例
 
 - 验证用户X账户的关注者数量，以确定他们是KOL还是新人。
 - 使用用户的链下交易资产、交易量或代币状态实现资产验证。
 - 验证用户社交媒体帐户（例如 TikTok 或 X）的所有权，以提供基本的 PoH 功能。
 - 还有更多可根据您的需求定制的...
 
-通过我们的详细示例了解 SDK 的实际运行情况：
-
+[查看更多数据验证示例。](../examples/example.md)
 
 
 ## 使用案例
 
-- [可组合证明](https://docs.primuslabs.xyz/data-verification/use-cases/composable-attestations)
-- [去中心化创作者经济](https://docs.primuslabs.xyz/data-verification/use-cases/creator-economy)
-- [可互操作和可组合的社交图谱](https://docs.primuslabs.xyz/data-verification/use-cases/expand-social-graph)
-- [跨平台欺诈检测](https://docs.primuslabs.xyz/data-verification/use-cases/fraud-detection)
-- [去中心化的招聘和约会](https://docs.primuslabs.xyz/data-verification/use-cases/hiring-dating)
-- [具有动态资产证明的加密借贷](https://docs.primuslabs.xyz/data-verification/use-cases/lending)
-- [加密货币入口和出口](https://docs.primuslabs.xyz/data-verification/use-cases/otc)
-- [资产证明](https://docs.primuslabs.xyz/data-verification/use-cases/proof-of-assets)
-- [身份验证](https://docs.primuslabs.xyz/data-verification/use-cases/verify-digital-identity)
+[使用案例详情](../usecase/usecase.md)
 
 ## 需要帮忙
 我们在这里为您提供支持：

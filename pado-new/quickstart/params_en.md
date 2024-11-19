@@ -28,12 +28,12 @@ console.log(sdkInstance.supportedChainList);
 
 The wallet address of the user. This address will be used as an index for queries on the blockchain.
 
-### 3.attestationTypeID（字符串
-我们为每种证明类型分配了不同的 ID，这些 ID 可以传输以初始化相关的数据验证过程。
+### 3.attestationTypeID (string)
+We have assigned different IDs to each attestation type, which can be transmitted to initialize the associated data verification process.
 
 ```
 console.log(sdkInstance.supportedAttestationTypeList); 
-// text:  '某个应用的某个功能', value: '类型id'
+// text:  'A function of an application.', value: 'attestationTypeID'
 // Output: [
 // {text: 'binance kyc status', value: '1' },
 // {text: 'binance account ownership', value: '2' },
@@ -51,10 +51,9 @@ console.log(sdkInstance.supportedAttestationTypeList);
 // ]
 ```
 
-### 4.证明参数（数组
+### 4.attestationParameters (array)
 
-#### 4.1 对于 `attestationTypeID` **1、2、3、4 和 6**，您需要`[]`在 attestationParameters 中传输一个默认值，如下所示：
-
+#### 4.1 For the attestationTypeID **1, 2, 3, 4, and 6**, you need to transmit a default value [] in attestationParameters, like this:
 ~~~
   {
     chainID: 56,
@@ -64,10 +63,10 @@ console.log(sdkInstance.supportedAttestationTypeList);
   }
 ~~~
 
-#### 4.2 对于 `attestationTypeID` **9、10、11、12、15、16、17 和 101**，您需要使用不同的输入进行传输。
+#### 4.2 For attestationTypeID **9, 10, 11, 12, 15, 16, 17, and 101**, you need to transmit with different inputs.
 
-- （1）对于 attestationTypeID 9
-    `attestationParameters` 应包含一个 `USD` 值（数字），最小值为 `0.000001`，精确到小数点后`6`位。如果`attestationParameters`设置为`['100']`，则会完成数据验证流程，验证用户的**资产余额是否大于`100`美元**。
+- （1）For attestationTypeID 9 & 11
+    The attestationParameters should include a USD value (numeric), with a minimum value of 0.000001 and restricted to a 6-decimal-place. If the attestationParameters is set to `['100']`, it will complete a data verification process to verify if the user's **asset balance is greater than USD 100**.
 
 ~~~
   {
@@ -78,8 +77,8 @@ console.log(sdkInstance.supportedAttestationTypeList);
   }
 ~~~
 
-- （2）对于 attestationTypeID 10
-attestationParameters 中应该包含 token 名称（字母），若 attestationParameters 设置为['USDT']，则会完成一个数据验证过程，验证用户是否持有**等值于 0.1 美元以上的 USDT**。
+- （2）For attestationTypeID 10 & 12
+The attestationParameters should include a token name (alphabet). If the attestationParameters is set to `['USDT']`, it will complete a data verification process to verify if the user holds **USDT equivalent to more than USD 0.1**.
 
 ~~~
   {
@@ -90,8 +89,8 @@ attestationParameters 中应该包含 token 名称（字母），若 attestation
   }
 ~~~
 
-- （3）对于 attestationTypeID 15
-attestationParameters 应包含关注者数量（数字），最小值为 0。如果 attestationParameters 设置为['10']，则会完成数据验证过程，以验证用户是否拥有**超过 10 个关注者**。
+- （3）For attestationTypeID 15
+The attestationParameters should include a follower number (numeric), with a minimum value of 0. If the attestationParameters is set to `['10']`, it will complete a data verification process to verify if the user has **more than 10 X followers**.
 
 ```
   {
@@ -102,8 +101,8 @@ attestationParameters 应包含关注者数量（数字），最小值为 0。�
   }
 ```
     
-- （4）对于 attestationTypeID 16
-attestationParameters 应包含一个 USD 值（数字），最小值为 0.000001，精确到小数点后 6 位。如果 attestationParameters 设置为['500']，则会完成数据验证流程，验证用户的**现货 30 天交易量是否大于 500 美元**。
+- （4）For attestationTypeID 16 & 17
+The attestationParameters should include a USD value (numeric), with a minimum value of 0.000001 and restricted to a 6-decimal-place. If the attestationParameters is set to ['500'], it will complete a data verification process to verify if the user's **spot 30-day trade volume is greater than USD 500**.
 
 ```
   {
@@ -114,11 +113,11 @@ attestationParameters 应包含一个 USD 值（数字），最小值为 0.00000
   }
 ```
     
-- （5）对于 attestationTypeID 101
+- （5）For attestationTypeID 101
 
-该证明集成了[Brevis](https://docs.brevis.network/)的SDK 以实现链上交易证明，可以验证用户自 2024 年 7 月以来是否在 BNB 链上进行过链上交易。
+This attestation integrates the [Brevis'](https://docs.brevis.network/) SDK to enable on-chain transaction proof, allowing verification of whether a user has conducted on-chain transactions on the BNB Chain since July 2024.
 
-attestationParameters 应包含用户钱包地址的签名（需要进行验证以确认该地址的所有权）以及表示签名时间的时间戳。**输入应遵循以下顺序：首先是“用户签名”；其次是“时间戳”**。
+The attestationParameters should include a signature from the user’s wallet address, which needs to be attested to confirm ownership of the address, along with a timestamp indicating the time of the signature. **The input should follow this order: first, ‘user signature’; second, ‘timestamp’**.
 
 
 ```
@@ -132,8 +131,8 @@ attestationParameters 应包含用户钱包地址的签名（需要进行验证�
    
     
 >
-> 笔记
-> 为了确认用户确实拥有要证明的地址，您必须验证传输的“用户签名”是否来自该地址。验证方法是：
+> NOTE
+> In order to confirm that the user truly owns the address to be attested, you must verify that the transmitted ‘user signature’ was signed from that address. The verification method is:
 > 
 > 
 >>  import { ethers } from "ethers";

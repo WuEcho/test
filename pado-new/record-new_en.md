@@ -14,11 +14,6 @@ Here's a simplified flow of how Primus works in a typical web application:
 
 - [The basic workflows](./work-flow/work-flow_en.md)
 
-## Need Help?
-We're here to support you:
-
-- Join our Telegram [community](https://discord.gg/AYGSqCkZTz)
-- Visit our [Website](https://primuslabs.xyz/)
 
 ## Application Examples
 
@@ -32,6 +27,12 @@ We're here to support you:
 ## Use Cases
 
 [Use Cases details.](../usecase/usecase_en.md)
+
+## Need Help?
+We're here to support you:
+
+- Join our Telegram [community](https://discord.gg/AYGSqCkZTz)
+- Visit our [Website](https://primuslabs.xyz/)
 
 ## Stay Connected
 Keep up with the latest Primus developments:

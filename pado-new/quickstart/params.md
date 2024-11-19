@@ -66,7 +66,7 @@ console.log(sdkInstance.supportedAttestationTypeList);
 
 #### 4.2 对于 `attestationTypeID` **9、10、11、12、15、16、17 和 101**，您需要使用不同的输入进行传输。
 
-- （1）对于 attestationTypeID 9
+- （1）对于 attestationTypeID 9 & 11
     `attestationParameters` 应包含一个 `USD` 值（数字），最小值为 `0.000001`，精确到小数点后`6`位。如果`attestationParameters`设置为`['100']`，则会完成数据验证流程，验证用户的**资产余额是否大于`100`美元**。
 
 ~~~
@@ -78,7 +78,7 @@ console.log(sdkInstance.supportedAttestationTypeList);
   }
 ~~~
 
-- （2）对于 attestationTypeID 10
+- （2）对于 attestationTypeID 10 & 12
 attestationParameters 中应该包含 token 名称（字母），若 attestationParameters 设置为['USDT']，则会完成一个数据验证过程，验证用户是否持有**等值于 0.1 美元以上的 USDT**。
 
 ~~~
@@ -102,7 +102,7 @@ attestationParameters 应包含关注者数量（数字），最小值为 0。�
   }
 ```
     
-- （4）对于 attestationTypeID 16
+- （4）对于 attestationTypeID 16 & 17
 attestationParameters 应包含一个 USD 值（数字），最小值为 0.000001，精确到小数点后 6 位。如果 attestationParameters 设置为['500']，则会完成数据验证流程，验证用户的**现货 30 天交易量是否大于 500 美元**。
 
 ```

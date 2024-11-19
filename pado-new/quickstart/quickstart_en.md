@@ -1,14 +1,14 @@
-# 前端示例：在应用程序中集成MPC-TLS SDK
+# Frontend Example: Integrating MPC-TLS SDK in a Application
 
-本指南将引导您完成将 Primus 的证明验证系统集成到您应用程序的基本步骤。
+This guide will walk you through the fundamental steps to integrate Primus's proof verification system into your application.
 
-## 1. 先决条件
-在开始之前，请确保您已：
+## 1. Prerequisites
+Before you begin, ensure you have:
 
-- 安装SDK（参见[安装指南](../install/install.md)）
+- Installed the SDK (see [Installation Guide](../install/install_en.md))
 
-## 2. 初始化
-要想集成MPC-TLS SDK需要先进行初始化操作
+## 2. InitAttestation
+To integrate MPC-TLS SDK requires initialization
 
 ```
 import MPCTLSJSSDK from "@padolabs/mpctls-js-sdk";
@@ -23,19 +23,19 @@ try {
 }
 ```
 
-## 3. 启动MPC-TLS
-注意：只有调用`initAttestation`方法后才能调用`startAttestation` 。
+## 3. Start MPC-TLS process
+Note: You can call startAttestation only after the initAttestation method is called.
 
-在开始数据验证过程之前，需要配置一些参数并将其传输到 MPC-TLS SDK。无论您如何在 dApp 中设置用户的操作步骤，都需要进行此配置。
+Before starting the data verification process, a few parameters should be configured and transmitted to the MPC-TLS SDK. This configuration is required regardless of how you set up your users' operation steps in you dApp.
   
-参数应按以下顺序配置：
+The parameters should be configured in the following order:
 
-- 1.chainID（必须）
-- 2.钱包地址（必须）
-- 3.attestationTypeID（必须）
-- 4.attestationParameters（必选，根据不同的attestationTypeID）
+- 1.chainID (must)
+- 2.walletAddress (must)
+- 3.attestationTypeID (must)
+- 4.attestationParameters (must, according to different attestationTypeID)
 
-具体参数说明可参考：[参数说明](./params.md)
+Parameters detail you can see: [Parameters details](./params_en.md)
 
 ```
 try {
@@ -114,14 +114,16 @@ try {
 }
 ```
 
-## 4. 验证认证
+## 4. Verify attestation result
 
-当收到验证结果后，需要验证该结果是否可信。
+After receiving the verified result, you need to verify whether the result is trustworthy.
 
-- **参数**
-    - **startAttestationReturnParams**：**StartAttestationReturnParams**一个包含 `eip712MessageRawDataWithSignature` 属性的对象，是`startAttestation`方法的返回值。 
-- **返回**：**boolean**签名是否验证成功。
-- **示例**
+- **Parameters**
+
+    - **startAttestationReturnParams:StartAttestationReturnParams** An object containing the properties of `eip712MessageRawDataWithSignature`, which is the return value of the `startAttestation` method.
+- **Return:boolean** Whether the signature is successfully verified.
+
+- **Example**
 
 ```
 const verifyAttestationResult = sdkInstance.verifyAttestation(
@@ -131,15 +133,17 @@ console.log(verifyAttestation);
 // Output: true
 ```
 
-## 5. 验证数据结果提交
-您只能向**3.启动MPC-TLS**中配置关联的chainID提交证明。
+## 5. Submit the verified data result (proof) to the blockchain
 
-- **参数**
-    - **startAttestationReturnParams**：**StartAttestationReturnParams**一个包含 `eip712MessageRawDataWithSignature` 属性的对象，是`startAttestation`方法的返回值。
-    - **wallet**:**any**钱包对象
+You can only submit the proof to the chainID associated with the configuration in **Step 3.Start MPC-TLS process**.
 
-- **返回**：**字符串**交易详情URL
-- **示例**
+- Parameters
+
+    - **startAttestationReturnParams:StartAttestationReturnParams** An object containing the properties of `eip712MessageRawDataWithSignature`, which is the return value of the `startAttestation` method.
+- **wallet:any** The wallet object
+- **Return:string** Transaction details URL
+
+- **Example**
 
 ```
 try {
@@ -155,19 +159,19 @@ try {
 }
 ```
 
-## 6.链上查看提交证明
+## 6.Check the submitted proof on-chain
 
-完成提交后，您可以使用下面相应的区块链链接找到链上详细信息。
+After completing the submission, you can find the on-chain details using the corresponding blockchain links below.
 
-### 6.1 主网
+### 6.1 Mainnet
 
-- Linea 主网：[https://lineascan.build/](https://lineascan.build/)
-- BNB链：[https://bascan.io/](https://bascan.io/)
+- Linea Mainnet：[https://lineascan.build/](https://lineascan.build/)
+- BNB Chain：[https://bascan.io/](https://bascan.io/)
 - opBNB：[https://scan.sign.global/](https://scan.sign.global/)
 - Arbitrum：[https://arbitrum.easscan.org/](https://arbitrum.easscan.org/)
-- Scroll 主网：[https://scrollscan.com/](https://scrollscan.com/)
+- Scroll Mainnet：[https://scrollscan.com/](https://scrollscan.com/)
 
-### 6.2 测试网
+### 6.2 Testnet
 
 - Sepolia: [https://sepolia.easscan.org/](https://sepolia.easscan.org/)
 - BNBTestnet:[ https://testnet.bascan.io/]( https://testnet.bascan.io/)
@@ -176,8 +180,8 @@ try {
 
 
 
-## 7. 完整示例
-这是一个简单示例，演示如何使用 MPC-TLS SDK 执行基本操作。
+## 7. Examples of the MPC-TLS SDK operations
+Here's a simple example demonstrating how to perform basic operations with the MPC-TLS SDK.
 
 ```
 import MPCTLSJSSDK from "@padolabs/mpctls-js-sdk";
